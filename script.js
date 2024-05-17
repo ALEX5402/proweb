@@ -204,10 +204,10 @@ class Point {
 const sentences = ["Hi, I am a Self Taught Android Developer", 
 "Who always stays up to date with the latest technologies", 
 "I use Arch btw",
-"I use my custom-compiled Linux kernel on my Android device, by the way" ,
+"I have my own Fork of Linux Kernel called N E O L I T-KSU " ,
 "I love to modify system frameworks on Android",
 "And I love Kotlin",
-"Currently working on my personal project Hostcraft Android app; will release soon"];
+"Currently working as a freelancer and worked few projects in past"];
 let currentSentenceIndex = 0;
 let currentCharacterIndex = 0;
 let writing = true;
@@ -250,7 +250,7 @@ function linkHandle(event){
       window.open('https://github.com/alex5402', '_blank');
       break;
     case 'text-yt':
-      window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D', '_blank');
+      window.open('https://x.com/shellstr0m', '_blank');
       break;
     case 'text-dc':
       window.open('https://discord.gg/2TTB3RmMMe', '_blank');
@@ -264,7 +264,7 @@ async function animstart(){
   textnullBit.textContent = alex;
   textInfo.textContent = "hahaha so cool";
   textGithub.textContent = "Github";
-  textYT.textContent = "Youtube";
+  textYT.textContent = "Twitter";
   textDC.textContent = "Discord";
 
   textGithub.addEventListener('click', linkHandle)
