@@ -201,13 +201,12 @@ class Point {
   }
 }
 
-const sentences = ["Hi, I am a Self Taught Android Developer", 
-"Who always stays up to date with the latest technologies", 
-"I use Arch btw",
-"I have my own Fork of Linux Kernel called N E O L I T-KSU " ,
-"I love to modify system frameworks on Android",
-"And I love Kotlin",
-"Currently working as a freelancer and worked few projects in past"];
+const sentences = ["Hi, I am a Self Taught Android Developer 🎉", 
+"I love to Sleep on my free time 😅 ",
+"I have my own Fork of Linux Kernel called N E O L I T-KSU 😁" ,
+"I love to modify system frameworks on Android 🤖",
+"And I love Kotlin More Than Girls 😘",
+"Currently working as a freelancer and worked few projects in past 🙂"];
 let currentSentenceIndex = 0;
 let currentCharacterIndex = 0;
 let writing = true;

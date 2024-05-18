@@ -90,7 +90,7 @@ body {
   }
 
   #text-nullBit {
-    color: white;
+    color: rgb(136, 255, 0);
     position: absolute;
     top: 20%;
     left: 50%;
