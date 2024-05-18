@@ -283,6 +283,13 @@ async function animstart(){
     points.push(point);
   }
 
+  function changeTextColor() {
+    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    textnullBit.style.color = randomColor;
+  }
+
+  // Change color every second
+  setInterval(changeTextColor, 1000);
 
   async function anima(){
     let cursorX = window.innerWidth/2;
