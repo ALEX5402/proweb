@@ -289,7 +289,7 @@ async function animstart(){
   }
 
   // Change color every second
-  setInterval(changeTextColor, 500);
+  setInterval(changeTextColor, 1000);
 
   async function anima(){
     let cursorX = window.innerWidth/2;
