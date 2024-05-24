@@ -201,7 +201,7 @@ class Point {
   }
 }
 
-const sentences = ["Hi, I am  Android Developer 🎉", 
+const sentences = ["Hi, I am Self Taught Android Developer 🎉", 
 "I love to Sleep on my free time 😅 ",
 "I love to modify system frameworks on Android 🤖",
 "And I love Kotlin More Than Girls 😘",
