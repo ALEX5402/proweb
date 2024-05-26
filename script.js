@@ -14,6 +14,29 @@ const dots = '...';
 let ipaddr;
 let country;
 let entered;
+const setups = [];
+
+async function fetchAndParseJokes() {
+  const url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
+  
+  try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.error) {
+          console.error("Error fetching jokes:", data);
+          return;
+      }
+      
+      if (data.type === "twopart") {
+          setups.push(data.setup);
+           setups.push(data.delivery);
+      }
+
+  } catch (error) {
+      console.error("An error occurred:", error);
+  }
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -21,8 +44,6 @@ function sleep(ms) {
 
 async function typeLoading() {
   const loadingText = 'Loading ';
-  
-  
   
   for(let i = 0; i < loadingText.length; i++){
     textContainer.textContent += loadingText[i];
@@ -93,6 +114,11 @@ async function grantingAccess() {
   }
 
   welcoming();
+  while (true) {
+    await fetchAndParseJokes();
+    await sleep(1000); 
+}
+
 }
 
 async function welcoming() {
@@ -201,32 +227,27 @@ class Point {
   }
 }
 
-const sentences = ["Hi, I am Self Taught Android Developer 🎉", 
-"I love to Sleep on my free time 😅 ",
-"I love to modify system frameworks on Android 🤖",
-"And I love Kotlin More Than Girls 😘",
-"Currently working as a freelancer and worked few projects in past 🙂"];
 let currentSentenceIndex = 0;
 let currentCharacterIndex = 0;
 let writing = true;
 let currText = "";
 
 function typeText(){
-  if(currentSentenceIndex >= sentences.length ){
+  if(currentSentenceIndex >= setups.length ){
     currentSentenceIndex = 0;
   }
-  console.log(currentSentenceIndex);
-  console.log(currentCharacterIndex);
-  if(currentCharacterIndex >= sentences[currentSentenceIndex].length && writing ){
+  // console.log(currentSentenceIndex);
+  // console.log(currentCharacterIndex);
+  if(currentCharacterIndex >= setups[currentSentenceIndex].length && writing ){
     
-    console.log("did");
+    // console.log("did");
     currentSentenceIndex += 1;
     writing = false
   }
 
   if(writing){
     textInfo.textContent = currText;
-    currText += sentences[currentSentenceIndex][currentCharacterIndex];
+    currText += setups[currentSentenceIndex][currentCharacterIndex];
     currentCharacterIndex+=1;
   }
   else{
@@ -237,7 +258,7 @@ function typeText(){
       writing = true;
     }
   }
-  console.log(currText);
+  // console.log(currText);
 }
 
 function linkHandle(event){
@@ -255,6 +276,7 @@ function linkHandle(event){
       break;
   }
 }
+
 
 
 async function animstart(){
@@ -282,12 +304,7 @@ async function animstart(){
     const point = new Point(x, y);
     points.push(point);
   }
-
-  function changeTextColor() {
-    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-    textnullBit.style.color = randomColor;
-  }
-  setInterval(changeTextColor, 1000);
+  setInterval(changeTextColor, 500);
 
   async function anima(){
     let cursorX = window.innerWidth/2;
@@ -308,13 +325,10 @@ async function animstart(){
       mCanv.width = window.innerWidth;
       mCanv.height = window.innerHeight;
       ctx.clearRect(0, 0, mCanv.width, mCanv.height);
-      console.log(cursorX);
-      console.log(cursorY);
+      // console.log(cursorX);
+      // console.log(cursorY);
       
       timePast = performance.now() - currentTime;
-      
-
-
       for(const point of points){
         point.update();
         ctx.beginPath();
@@ -349,9 +363,15 @@ async function animstart(){
 
     }
   }
-
   await anima();
   
+}
+
+function changeTextColor() {
+  const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+  // const randomColor2 = '#' + Math.floor(Math.random() * 16777215).toString(16);
+  textnullBit.style.color = randomColor;
+  // textInfo.style.color = randomColor2;
 }
 
 typeLoading();
